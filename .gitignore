@@ -1,2 +1,2 @@
 # Removing all the tf state file
-*terraform*
+.terraform*
