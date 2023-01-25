@@ -13,11 +13,12 @@ provider "google-beta" {
 }
 
 resource "google_dataflow_flex_template_job" "big_data_job" {
+  count=var.df_flex_count
   provider                = google-beta
-  name                    = "dataflow-flex-test-job-1"
-  container_spec_gcs_path = var.gs_bucket_flex_template 
+  name                    = var.df_flex_names[count.index]
+  container_spec_gcs_path = var.df_flex_gcs_path[count.index] 
   parameters = {
-    inputSubscription = "sub-1-test",
-    outputTable="cft-test-375007:bq-test-dataset.bq-test-table"
+    inputSubscription = var.df_flex_input_subscription[count.index]
+    outputTable=var.df_flex_output_table[count.index]
   }
 }
