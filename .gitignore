@@ -1,2 +1,3 @@
 # Removing all the tf state file
 .terraform*
+/streaming_beam_sql/target
