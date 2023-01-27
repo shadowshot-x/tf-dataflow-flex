@@ -12,11 +12,12 @@ provider "google-beta" {
   zone    = var.zone
 }
 
+// used to run a CLI command. Will work on systems with gcloud installed
 resource "null_resource" "flex_template" {
 
  provisioner "local-exec" {
     
-    command = "gcloud dataflow flex-template build gs://test-tf-flex/samples/dataflow/templates/streaming-beam-sql.json       --image-gcr-path \"us-central1-docker.pkg.dev/cft-test-375007/test-tf-flex-repo/dataflow/streaming-beam-sql:latest\"       --sdk-language \"JAVA\"       --flex-template-base-image JAVA11       --metadata-file \"./streaming_beam_sql/metadata.json\"       --jar \"./streaming_beam_sql/target/streaming-beam-sql-1.0.jar\"       --env FLEX_TEMPLATE_JAVA_MAIN_CLASS=\"org.apache.beam.samples.StreamingBeamSql\""
+    command = "gcloud dataflow flex-template build ${var.create_template_path}       --image-gcr-path \"${var.create_artifactory_jar_image}\"       --sdk-language \"JAVA\"       --flex-template-base-image JAVA11       --metadata-file \"${var.create_metadata_file_path}\"  --jar \"${var.create_jar_path}\"       --env FLEX_TEMPLATE_JAVA_MAIN_CLASS=\"${var.create_java_main_class}\""
   }
 }
 

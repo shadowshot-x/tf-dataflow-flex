@@ -29,3 +29,23 @@ variable "df_flex_output_table" {
 variable "df_flex_count" {
   type = number
 }
+
+variable "create_template_path" {
+  type = string
+}
+
+variable "create_artifactory_jar_image" {
+  type = string
+}
+
+variable "create_metadata_file_path" {
+  type = string
+}
+
+variable "create_jar_path" {
+  type = string
+}
+
+variable "create_java_main_class" {
+  type = string
+}
