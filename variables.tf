@@ -30,6 +30,11 @@ variable "df_flex_count" {
   type = number
 }
 
+variable "create_language" {
+  default = "JAVA"
+  type = string
+}
+
 variable "create_template_path" {
   type = string
 }

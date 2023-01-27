@@ -9,6 +9,7 @@ df_flex_input_subscription=["sub-1-test","sub-1-test","sub-1-test"]
 df_flex_output_table=["cft-test-375007:bq-test-dataset.bq-test-table","cft-test-375007:bq-test-dataset.bq-test-table","cft-test-375007:bq-test-dataset.bq-test-table"]
 
 # df flex template creation variables 
+create_language="JAVA"
 create_template_path="gs://test-tf-flex/samples/dataflow/templates/streaming-beam-sql.json"
 create_artifactory_jar_image="us-central1-docker.pkg.dev/cft-test-375007/test-tf-flex-repo/dataflow/streaming-beam-sql:latest"
 create_metadata_file_path="./streaming_beam_sql/metadata.json"
