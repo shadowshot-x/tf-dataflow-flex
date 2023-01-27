@@ -6,6 +6,11 @@ terraform {
   }
 }
 
+locals {
+  java_command = "gcloud dataflow flex-template build ${var.create_template_path}       --image-gcr-path \"${var.create_artifactory_jar_image}\"       --sdk-language \"JAVA\"       --flex-template-base-image JAVA11       --metadata-file \"${var.create_metadata_file_path}\"  --jar \"${var.create_jar_path}\"       --env FLEX_TEMPLATE_JAVA_MAIN_CLASS=\"${var.create_java_main_class}\""
+  python_command = "gcloud dataflow flex-template build ${var.create_template_path} --image \"${var.create_artifactory_jar_image}\" --sdk-language \"PYTHON\" --metadata-file \"${var.create_metadata_file_path}\""
+}
+
 provider "google-beta" {
   project = var.project
   region  = var.region
@@ -16,8 +21,8 @@ provider "google-beta" {
 resource "null_resource" "flex_template" {
 
  provisioner "local-exec" {
-    
-    command = "gcloud dataflow flex-template build ${var.create_template_path}       --image-gcr-path \"${var.create_artifactory_jar_image}\"       --sdk-language \"JAVA\"       --flex-template-base-image JAVA11       --metadata-file \"${var.create_metadata_file_path}\"  --jar \"${var.create_jar_path}\"       --env FLEX_TEMPLATE_JAVA_MAIN_CLASS=\"${var.create_java_main_class}\""
+    command = "${var.create_language == "JAVA" ? local.java_command : local.python_command }"
+    //command = "gcloud dataflow flex-template build ${var.create_template_path}       --image-gcr-path \"${var.create_artifactory_jar_image}\"       --sdk-language \"JAVA\"       --flex-template-base-image JAVA11       --metadata-file \"${var.create_metadata_file_path}\"  --jar \"${var.create_jar_path}\"       --env FLEX_TEMPLATE_JAVA_MAIN_CLASS=\"${var.create_java_main_class}\""
   }
 }
 
