@@ -15,13 +15,17 @@ df_job_details={
     job1={
         df_flex_name="df-job-1"
         df_flex_gcs_path="gs://test-tf-flex/samples/dataflow/templates/streaming-beam-sql.json"
-        df_flex_input_subscription="sub-1-test"
-        df_flex_output_table="cft-test-375007:bq-test-dataset.bq-test-table"
+        parameters={
+            inputSubscription = "sub-1-test"
+            outputTable="cft-test-375007:bq-test-dataset.bq-test-table"
+        }
     },
     job2={
         df_flex_name="df-job-2"
         df_flex_gcs_path="gs://test-tf-flex/samples/dataflow/templates/streaming-beam-sql.json"
-        df_flex_input_subscription="sub-1-test"
-        df_flex_output_table="cft-test-375007:bq-test-dataset.bq-test-table"
+        parameters={
+            inputSubscription = "sub-1-test"
+            outputTable="cft-test-375007:bq-test-dataset.bq-test-table"
+        }
     }
 }
