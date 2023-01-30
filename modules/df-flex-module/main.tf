@@ -17,8 +17,5 @@ resource "google_dataflow_flex_template_job" "big_data_job" {
  provider = google-beta
  name = each.value.df_flex_name
  container_spec_gcs_path = each.value.df_flex_gcs_path
- parameters = {
-    inputSubscription = each.value.df_flex_input_subscription
-    outputTable=each.value.df_flex_output_table
-  }
+ parameters = each.value.parameters
 }
