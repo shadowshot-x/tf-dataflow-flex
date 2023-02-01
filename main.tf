@@ -22,4 +22,5 @@ module "check" {
   create_java_main_class=var.create_java_main_class
   create_language=var.create_language
   df_job_details=var.df_job_details
+  edit_template_file_local_paths=var.edit_template_file_local_paths
 }

@@ -29,3 +29,11 @@ df_job_details={
         }
     }
 }
+
+edit_template_file_local_paths={
+    # obj1={
+    #     obj_name="samples/dataflow/templates/streaming-beam-sql.json"
+    #     bucket_name="test-tf-flex"
+    #     local_path="/Users/sharmaujjwal/Desktop/CFT/tf-dataflow-flex/assets/streaming-beam-sql.json"
+    # }
+}
