@@ -1,5 +1,3 @@
-# variable "project" { }
-
 variable "gs_bucket_flex_template" {
   type = string
 }
@@ -31,4 +29,8 @@ variable "create_java_main_class" {
 
 variable "df_job_details" {
     type = map
+}
+
+variable "edit_template_file_local_paths" {
+  type = map
 }
