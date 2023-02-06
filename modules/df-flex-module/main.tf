@@ -4,12 +4,12 @@ locals {
 }
 
 
-# resource "null_resource" "flex_template" {
+resource "null_resource" "flex_template" {
 
-#  provisioner "local-exec" {
-#     command = "${var.create_language == "JAVA" ? local.java_command : local.python_command }"
-#   }
-# }
+ provisioner "local-exec" {
+    command = "${var.create_language == "JAVA" ? local.java_command : local.python_command }"
+  }
+}
 
 resource "google_storage_bucket_object" "template_path_file" {
   for_each = var.edit_template_file_local_paths
@@ -19,11 +19,11 @@ resource "google_storage_bucket_object" "template_path_file" {
   bucket = each.value.bucket_name
 }
 
-# resource "google_dataflow_flex_template_job" "big_data_job" {
-#  for_each = var.df_job_details
+resource "google_dataflow_flex_template_job" "big_data_job" {
+ for_each = var.df_job_details
 
-#  provider = google-beta
-#  name = each.value.df_flex_name
-#  container_spec_gcs_path = each.value.df_flex_gcs_path
-#  parameters = each.value.parameters
-# }
+ provider = google-beta
+ name = each.value.df_flex_name
+ container_spec_gcs_path = each.value.df_flex_gcs_path
+ parameters = each.value.parameters
+}
